@@ -1,0 +1,14 @@
+var m = require('mraa'); //require mraa
+console.log('MRAA Version: ' + m.getVersion()); //write the mraa version to the console
+
+varmyLed = new m.Gpio(13); //LED hooked up to digital pin 13 (or built in pin on Galileo Gen1 & Gen2 or Edison)
+myLed.dir(m.DIR_OUT); //set the gpio direction to output
+varledState = true; //Boolean to hold the state of Led
+
+functionperiodicActivity()
+  {
+    myLed.write(ledState?1:0); 
+    ledState = !ledState;
+    setTimeout(periodicActivity,1000);
+  }	
+periodicActivity(); //call the periodicActivity function

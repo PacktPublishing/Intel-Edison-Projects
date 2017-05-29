@@ -1,0 +1,13 @@
+var mraa = require('mraa'); var mqtt = require('mqtt');
+varledPin=new mraa.Gpio(13); ledPin.dir(mraa.DIR_OUT);
+var client = mqtt.connect('mqtt://iot.eclipse.org'); client.subscribe('avirup/control/#') client.handleMessage=function(packet,callback)
+{
+var payload = packet.payload.toString() console.log(payload); 
+if(payload=='ON')
+ledPin.write(1);
+if(payload=='OFF') 
+ledPin.write(0);
+ 
+
+callback();
+}

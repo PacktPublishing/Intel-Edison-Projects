@@ -1,0 +1,86 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+using System.IO.Ports;
+
+namespace RobotController
+{
+    /// <summary>
+    /// Interaction logic for MainWindow.xaml
+    /// </summary>
+    public partial class MainWindow : Window
+    {
+        SerialPort sp = new SerialPort();
+        public MainWindow()
+        {
+            InitializeComponent();
+        }
+
+        private void connect_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                String portName = comno.Text;
+                sp.PortName = portName;
+                sp.BaudRate = 9600;
+                sp.Open();
+                status.Text = "Connected";
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Please give a valid port number or check your connection");
+            }
+
+        }
+
+        private void disconnect_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                sp.Close();
+                status.Text = "Disconnected";
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("First Connect and then disconnect");
+            }
+        }
+
+        private void on_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                sp.WriteLine("1");
+            }
+            catch(Exception)
+            {
+                MessageBox.Show("Not connected");
+            }
+        }
+
+        private void off_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                sp.WriteLine("2");
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Not connected");
+            }
+        }
+    }
+}

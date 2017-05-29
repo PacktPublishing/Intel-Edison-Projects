@@ -1,0 +1,47 @@
+<Window x:Class="BET_Controller_v2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="URC V1.0.0.1" Height="720" Width="1360" Loaded="Window_Loaded">
+<Grid>
+<TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Controls invloving high speed" VerticalAlignment="Top" Height="25" Width="269" Margin="10,0,0,0"/>
+<Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="13" Stroke="Black" VerticalAlignment="Top" Width="498" Margin="10,25,0,0"/>
+<Button x:Name="front_fast" Content="Front" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="204,56,0,0" Height="48" GotMouseCapture="front_fast_GotMouseCapture" LostMouseCapture="front_fast_LostMouseCapture" />
+<Button x:Name="back_fast" Content="back" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="204,193,0,0" Height="53" GotMouseCapture="back_fast_GotMouseCapture" LostMouseCapture="back_fast_LostMouseCapture"/>
+<Button x:Name="left_fast" Content="left" HorizontalAlignment="Left" VerticalAlignment="Top" Width="74" Margin="92,125,0,0" Height="50" GotMouseCapture="left_fast_GotMouseCapture" LostMouseCapture="left_fast_LostMouseCapture" />
+<Button x:Name="right_fast" Content="right" HorizontalAlignment="Left" VerticalAlignment="Top" Width="76" Margin="316,125,0,0" Height="50" GotMouseCapture="right_fast_GotMouseCapture" LostMouseCapture="right_fast_LostMouseCapture" />
+<Button x:Name="stop_fast" Content="stop" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="204,125,0,0" Height="50" RenderTransformOrigin="0.362,0.5" Click="stop_fast_Click" />
+<Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="13" Stroke="Black" VerticalAlignment="Top" Width="498" Margin="10,305,0,0"/>
+<TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Controls invloving low speed" VerticalAlignment="Top" Height="25" Width="269" Margin="10,323,0,0"/>
+<Button x:Name="front_slow" Content="front" HorizontalAlignment="Left" Margin="204,374,0,0" VerticalAlignment="Top" Width="75" Height="53" GotMouseCapture="front_slow_GotMouseCapture" LostMouseCapture="front_slow_LostMouseCapture"/>
+<Button x:Name="back_slow" Content="back" HorizontalAlignment="Left" Margin="204,526,0,0" VerticalAlignment="Top" Width="75" Height="53" LostMouseCapture="back_slow_LostMouseCapture" GotMouseCapture="back_slow_GotMouseCapture" />
+<Button x:Name="right_slow" Content="right" HorizontalAlignment="Left" Margin="316,454,0,0" VerticalAlignment="Top" Width="76" Height="53" LostMouseCapture="right_slow_LostMouseCapture" GotMouseCapture="right_slow_GotMouseCapture" />
+<Button x:Name="left_slow" Content="left" HorizontalAlignment="Left" Margin="92,454,0,0" VerticalAlignment="Top" Width="74" Height="53" GotMouseCapture="left_slow_GotMouseCapture" LostMouseCapture="left_slow_LostMouseCapture" />
+<Button x:Name="stop_slow" Content="stop" HorizontalAlignment="Left" Margin="204,454,0,0" VerticalAlignment="Top" Width="75" Height="53" Click="stop_slow_Click"/>
+<Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="13" Stroke="Black" VerticalAlignment="Top" Width="255" Margin="552,25,0,0"/>
+<TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Special controls" VerticalAlignment="Top" Height="25" Width="269" Margin="552,0,0,0"/>
+<Button x:Name="rr360" Content="360 deg rotation right" HorizontalAlignment="Left" Margin="607,94,0,0" VerticalAlignment="Top" Width="138" Height="53" RenderTransformOrigin="0.498,0.524" Click="rr360_Click"/>
+<Button x:Name="lr360" Content="360 deg rotation left" HorizontalAlignment="Left" Margin="607,193,0,0" VerticalAlignment="Top" Width="138" Height="53" RenderTransformOrigin="0.498,0.524" Click="lr360_Click" />
+<TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Command will be displayed below" VerticalAlignment="Top" Height="25" Width="484" Margin="858,13,0,0"/>
+<Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="10" Stroke="Black" VerticalAlignment="Top" Width="484" Margin="858,43,0,0"/>
+<TextBlock x:Name="cmd" HorizontalAlignment="Left" Margin="858,72,0,0" TextWrapping="Wrap" Text="Commands" VerticalAlignment="Top" Height="174" Width="484"/>
+<TextBox x:Name="cno" HorizontalAlignment="Left" Height="29" Margin="858,273,0,0" TextWrapping="Wrap" Text="COM13" VerticalAlignment="Top" Width="85"/>
+<Button x:Name="connect" Content="Connect" HorizontalAlignment="Left" Margin="858,307,0,0" VerticalAlignment="Top" Width="85" Height="41" RenderTransformOrigin="0.498,0.524" Click="connect_Click" />
+<Button x:Name="disconnect" Content="Disconnect" HorizontalAlignment="Left" Margin="964,307,0,0" VerticalAlignment="Top" Width="85" Height="41" RenderTransformOrigin="0.498,0.524" Click="disconnect_Click" />
+<Button x:Name="rst" Content="Reset" HorizontalAlignment="Left" Margin="607,295,0,0" VerticalAlignment="Top" Width="138" Height="53" RenderTransformOrigin="0.498,0.524" Click="rst_Click" />
+<TextBlock HorizontalAlignment="Left" Margin="858,353,0,0" x:Name="s"  TextWrapping="Wrap" Text="Click Connect to connect" VerticalAlignment="Top" Height="33" Width="191"/>
+<ProgressBar x:Name="pbkc" HorizontalAlignment="Left" Height="10" Margin="549,569,0,0" VerticalAlignment="Top" Width="272"/>
+<ProgressBar x:Name="pb2" HorizontalAlignment="Left" Height="10" Margin="92,631,0,0" VerticalAlignment="Top" Width="300"/>
+<ProgressBar x:Name="pb1" HorizontalAlignment="Left" Height="10" Margin="92,273,0,0" VerticalAlignment="Top" Width="300"/>
+<Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="12" Stroke="Black" VerticalAlignment="Top" Width="269" Margin="552,374,0,0"/>
+<TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Keybooard controls" VerticalAlignment="Top" Height="25" Width="269" Margin="552,392,0,0"/>
+<Button Content="Press to activate keyboard controls" Name="kbp" HorizontalAlignment="Left" Margin="582,454,0,0" VerticalAlignment="Top" Width="202" Height="52" KeyDown="kbp_KeyDown" KeyUp="Kbp_KeyUp"/>
+<Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="11" Stroke="Black" VerticalAlignment="Top" Width="484" Margin="858,391,0,0"/>
+<TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Enter the password below to activate all controls. The password was supplied by the administrator with the bundel." VerticalAlignment="Top" Height="51" Width="269" Margin="858,414,0,0"/>
+<Button x:Name="activate" Content="Activate" HorizontalAlignment="Left" Margin="1052,631,0,0" VerticalAlignment="Top" Width="75" Height="33" Click="activate_Click" KeyDown="activate_KeyDown"/>
+<PasswordBox x:Name="pswrdbox" HorizontalAlignment="Left" Margin="1025,585,0,0" VerticalAlignment="Top" Height="25" Width="124" PasswordChar="*" FontSize="24"/>
+<Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="645" Stroke="Black" VerticalAlignment="Top" Width="5" Margin="834,8,0,0" RenderTransformOrigin="0.5,0.5">
+</Rectangle>
+<Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="645" Stroke="Black" VerticalAlignment="Top" Width="5" Margin="539,19,0,0" RenderTransformOrigin="0.5,0.5"/>
+
+</Grid>
+</Window>

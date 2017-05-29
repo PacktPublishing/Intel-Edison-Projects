@@ -1,0 +1,40 @@
+
+functiondisplayRes()
+
+{
+
+//Import mraa
+
+var mraa= require('mraa'); var B=4275;
+var R0=100000;
+
+//Temperature pin
+
+var tempPin=new mraa.Aio(0);
+
+//Sound pin
+
+varsoundPin= new mraa.Aio(1);
+
+//Smoke pin
+
+varpolPin= new mraa.Aio(2);
+
+//Processing of temperature var a=tempPin.read();
+var R=1023/a-1; R=100000*R;
+var temperature=1/(Math.log(R/100000)/B+1/298.15)-273.15; temperature = +temperature.toFixed(2);
+//Smoke read
+
+varsmokeValue= polPin.read();
+ 
+
+//Sound read
+
+varsndRead= soundPin.read();
+
+
+
+console.log("Temperature=	", temperature); console.log("Sound level=	", sndRead); console.log("Smoke level= ", smokeValue); setTimeout(displayRes,500);
+}
+
+displayRes();

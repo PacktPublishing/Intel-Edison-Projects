@@ -1,0 +1,78 @@
+int pwm1=6,dir1=2,brk1=3,pwm2=9,dir2=4,brk2=5;
+void setup() 
+{
+  pinMode(2,OUTPUT);
+  pinMode(6,OUTPUT);
+  pinMode(3,OUTPUT);
+  pinMode(4,OUTPUT);
+  pinMode(5,OUTPUT);
+  pinMode(9,OUTPUT);
+}
+void loop() 
+{
+  forward();
+  delay(10000);
+  backward();
+  delay(10000);
+  left();
+  delay(10000);
+  right();
+  delay(10000);
+  stop();
+  delay(10000);
+}
+void forward()
+{
+  //Left side motors 
+  digitalWrite(2,LOW); //Direction
+  digitalWrite(3,LOW); //Brake
+  analogWrite(6,122);
+  //Right side motor
+  digitalWrite(4,LOW); //Direction
+  digitalWrite(5,LOW); //Brake
+  analogWrite(9,122);
+}
+void backward()
+{
+  //Left side motors 
+  digitalWrite(2,HIGH);//Direction
+  digitalWrite(3,LOW); //Brake
+  analogWrite(6,122);
+  //Right side motor
+  digitalWrite(4,HIGH);//Direction
+  digitalWrite(5,LOW); //Brake
+  analogWrite(9,122);
+}
+void left()
+{
+  //Left side motors 
+  digitalWrite(2,LOW);//Direction
+  digitalWrite(3,LOW); //Brake
+  analogWrite(6,122);
+  //Right side motor
+  digitalWrite(4,HIGH);//Direction
+  digitalWrite(5,LOW); //Brake
+  analogWrite(9,122);
+}
+void right()
+{
+  //Left side motors 
+  digitalWrite(2,HIGH);//Direction
+  digitalWrite(3,LOW); //Brake
+  analogWrite(6,122);
+  //Right side motor
+  digitalWrite(4,LOW);//Direction
+  digitalWrite(5,LOW); //Brake
+  analogWrite(9,122);
+}
+void stop()
+{
+  //Left side motors 
+  digitalWrite(2,LOW);//Direction
+  digitalWrite(3,HIGH); //Brake
+  analogWrite(6,122);
+  //Right side motor
+  digitalWrite(4,LOW);//Direction
+  digitalWrite(5,HIGH); //Brake
+  analogWrite(9,122);
+}

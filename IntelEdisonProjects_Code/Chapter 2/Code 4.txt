@@ -1,0 +1,61 @@
+
+function dweetSend()
+
+{
+
+vardweetClient = require("node-dweetio"); vardweetio = new dweetClient();
+//Import mraa
+
+var mraa= require('mraa'); var B=4275;
+var R0=100000;
+
+//Temperature pin
+
+var tempPin=new mraa.Aio(0);
+
+//Sound pin
+
+varsoundPin= new mraa.Aio(1);
+
+//Smoke pin
+
+varpolPin= new mraa.Aio(2);
+
+//Processing of temperature var a=tempPin.read();
+var R=1023/a-1; R=100000*R;
+var temperature=1/(Math.log(R/100000)/B+1/298.15)-273.15; temperature = +temperature.toFixed(2);
+//Smoke read
+
+varsmokeValue= polPin.read();
+
+//Sound read
+ 
+
+varsndRead= soundPin.read();
+
+
+
+dweetio.dweet_for("WeatherStation",
+{Temperature:temperature, SmokeLevel:smokeValue, SoundLevel:sndRead}, function(err, dweet)
+
+{
+
+
+
+console.log(dweet.thing); // "my-thing"
+
+console.log(dweet.content); // The content
+of the dweet
+
+console.log(dweet.created); // The create
+date of the dweet
+
+
+
+});
+
+setTimeout(dweetSend,10000);
+
+}
+
+dweetSend();

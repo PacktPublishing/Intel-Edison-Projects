@@ -1,0 +1,26 @@
+void loop() 
+{
+  int a,b;
+  a=digitalRead(S1);
+  b=digitalRead(S2);
+  //Left turn condition
+  if(a==0&&b==1)
+  {
+    left();
+  }
+  //Right turn condition
+  else if(a==1&&b==0)
+  {
+    right();
+  }
+  //Stop condition
+  else if(a==0&&b==0)
+  {
+    stop();
+  }
+  //By default forward
+  else
+  {
+    forward();
+  }
+}

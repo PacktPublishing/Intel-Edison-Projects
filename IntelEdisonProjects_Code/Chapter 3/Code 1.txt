@@ -1,0 +1,16 @@
+var mraa = require('mraa'); var mqtt = require('mqtt'); var B=4275;
+var R0=100000;
+var client = mqtt.connect('mqtt://iot.eclipse.org');
+ 
+
+function sendData()
+{
+var tempPin=new mraa.Aio(0);
+//Processing of temperature var a=tempPin.read();
+var R=1023/a-1; R=100000*R;
+var temperature=1/(Math.log(R/100000)/B+1/298.15)-273.15; temperature = +temperature.toFixed(2);
+//Converting type int to type string
+var sendTemp= temperature.toString();
+//Publish the processed data client.publish('avirup/temperature',sendTemp); console.log("Sending data of temperature %d", temperature); setTimeout(sendData,1000);
+}
+sendData();

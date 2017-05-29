@@ -1,0 +1,8 @@
+#define RELAY_PIN 13 void setup()
+{
+pinMode(RELAY_PIN,OUTPUT); //Set relay pin to output
+}
+void loop
+{
+digitalWrite(RELAY_PIN, HIGH); //Set relay to on position
+}

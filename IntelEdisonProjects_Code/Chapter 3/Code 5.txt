@@ -1,0 +1,83 @@
+package com.example.avirup.mqtt;
+
+import org.eclipse.paho.client.mqttv3.IMqttDeliveryToken;
+import org.eclipse.paho.client.mqttv3.MqttCallback;
+import org.eclipse.paho.client.mqttv3.MqttClient;
+import org.eclipse.paho.client.mqttv3.MqttException;
+import org.eclipse.paho.client.mqttv3.MqttMessage;
+import org.eclipse.paho.client.mqttv3.MqttPersistenceException;
+import org.eclipse.paho.client.mqttv3.MqttSecurityException;
+import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
+
+import java.io.UnsupportedEncodingException;
+
+/**
+ * Created by Avirup on 16-02-2017.
+ */
+
+public class MqttClass implements MqttCallback
+{
+    String serverURI, port, clientID;
+    MqttClient client;
+    MqttCallback callback;
+    //Constructor
+    MqttClass(String uri, String port, String clientID)
+    {
+        this.serverURI=uri;
+        this.port=port;
+        this.clientID=clientID;
+    }
+    public void MqttConnect()
+    {
+        try {
+            MemoryPersistence persistance = new MemoryPersistence();
+            StringBuilder ServerURI = new StringBuilder();
+            ServerURI.append("tcp://");
+            ServerURI.append(serverURI);
+            ServerURI.append(":");
+            ServerURI.append(port);
+            String finalServerUri = ServerURI.toString();
+            client = new MqttClient(finalServerUri, clientID, persistance);
+            client.setCallback(callback);
+            client.connect();
+        }
+        catch (MqttSecurityException e) {
+            e.printStackTrace();
+        } catch (MqttException e) {
+            e.printStackTrace();
+        }
+
+    }
+    public void MqttPublish(String message)
+    {
+        String commId=clientID;
+        try
+        {
+            byte[] payload=message.getBytes("UTF-8");
+            MqttMessage finalMsg= new MqttMessage(payload);
+            client.publish(clientID,finalMsg);
+        }
+        catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        } catch (MqttPersistenceException e) {
+            e.printStackTrace();
+        } catch (MqttException e) {
+            e.printStackTrace();
+        }
+    }
+    @Override
+    public void connectionLost(Throwable cause)
+    {
+
+    }
+
+    @Override
+    public void messageArrived(String topic, MqttMessage message) throws Exception {
+
+    }
+
+    @Override
+    public void deliveryComplete(IMqttDeliveryToken token) {
+
+    }
+}

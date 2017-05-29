@@ -1,0 +1,68 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+using uPLibrary.Networking.M2Mqtt;
+
+namespace Mqtt_Controller
+{
+    /// <summary>
+    /// Interaction logic for MainWindow.xaml
+    /// </summary>
+    public partial class MainWindow : Window
+    {
+
+        MqttClient client = new MqttClient("iot.eclipse.org");
+        String channelID_text;
+        public MainWindow()
+        {
+            InitializeComponent();
+        }
+
+        private void on_Click(object sender, RoutedEventArgs e)
+        {
+            byte[] array = Encoding.ASCII.GetBytes("ON");
+            client.Publish(channelID_text, array);
+            statusBox.Text = "on";
+        }
+
+        private void off_Click(object sender, RoutedEventArgs e)
+        {
+            byte[] array = Encoding.ASCII.GetBytes("OFF");
+            client.Publish(channelID_text, array);
+            statusBox.Text = "off";
+        }
+
+        private void connect_Click(object sender, RoutedEventArgs e)
+        {
+            channelID_text = channelID.Text;
+            if (string.IsNullOrEmpty(channelID_text))
+            {
+                MessageBox.Show("Channel ID cannot be null");
+            }
+            else
+            {
+                try
+                {
+                    client.Connect(channelID_text);
+                    connect.Content = "Connected";
+                }
+                catch (Exception ex)
+                {
+
+                    MessageBox.Show("Some issues occured:  " + ex.ToString());
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,5 @@
+<Button x:Name="on" Content="on" HorizontalAlignment="Left" Margin="151,180,0,0" VerticalAlignment="Top" Width="88" Click="on_Click"/>
+        <TextBlock x:Name="statusBox" Text="status" HorizontalAlignment="Left" Margin="229,205,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="115" Foreground="White"/>
+        <TextBox x:Name="channelID" HorizontalAlignment="Left" Height="23" Margin="151,101,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="193"/>
+        <Button x:Name="off" Content="off" HorizontalAlignment="Left" Margin="256,180,0,0" VerticalAlignment="Top" Width="88" Click="off_Click"/>
+        <Button x:Name="connect" Content="Connect" HorizontalAlignment="Left" VerticalAlignment="Top" Width="193" Margin="151,139,0,0" Click="connect_Click"/>

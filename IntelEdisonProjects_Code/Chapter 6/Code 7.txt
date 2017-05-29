@@ -1,0 +1,104 @@
+#define SLOW_SPEED 165
+#define MAX_SPEED 255
+int pwm1=6,dir1=2,brk1=3,pwm2=9,dir2=4,brk2=5;
+void setup() 
+{
+Serial1.begin(9600);
+  pinMode(2,OUTPUT);
+  pinMode(6,OUTPUT);
+  pinMode(3,OUTPUT);
+  pinMode(4,OUTPUT);
+  pinMode(5,OUTPUT);
+  pinMode(9,OUTPUT);
+}
+/*
+         * 1: Fast front
+         * 0: Fast back
+         * 3: Fast right
+         * 4: Fast left
+         * 5: STOP
+         * 6: Slow front
+         * 7: Slow back
+         * 8: Slow right
+         * 9: Slow left
+         * */
+void loop() 
+{
+  if(Serial1.available()>0)
+  {
+    char c= Serial1.read();
+    if(c=='1')
+    forward(MAX_SPEED);
+    else if(c=='0')
+    backward(MAX_SPEED);
+    else if(c=='3')
+    right(MAX_SPEED);
+    else if(c=='4')
+    left(MAX_SPEED);
+    else if(c=='6')
+    forward(SLOW_SPEED);
+    else if(c=='7')
+    backward(SLOW_SPEED);
+    else if(c=='8')
+    right(SLOW_SPEED);
+    else if(c=='9')
+    left(SLOW_SPEED);
+    else if(c=='5')
+    stop();  
+  }
+}
+void forward(int speed)
+{
+  //Left side motors 
+  digitalWrite(2,LOW); //Direction
+  digitalWrite(3,LOW); //Brake
+  analogWrite(6,speed);
+  //Right side motor
+  digitalWrite(4,LOW); //Direction
+  digitalWrite(5,LOW); //Brake
+  analogWrite(9,speed);
+}
+void backward(int speed)
+{
+  //Left side motors 
+  digitalWrite(2,HIGH);//Direction
+  digitalWrite(3,LOW); //Brake
+  analogWrite(6,speed);
+  //Right side motor
+  digitalWrite(4,HIGH);//Direction
+  digitalWrite(5,LOW); //Brake
+  analogWrite(9,speed);
+}
+void left(int speed)
+{
+  //Left side motors 
+  digitalWrite(2,LOW);//Direction
+  digitalWrite(3,LOW); //Brake
+  analogWrite(6,speed);
+  //Right side motor
+  digitalWrite(4,HIGH);//Direction
+  digitalWrite(5,LOW); //Brake
+  analogWrite(9,speed);
+}
+void right(int speed)
+{
+  //Left side motors 
+  digitalWrite(2,HIGH);//Direction
+  digitalWrite(3,LOW); //Brake
+  analogWrite(6,speed);
+  //Right side motor
+  digitalWrite(4,LOW);//Direction
+  digitalWrite(5,LOW); //Brake
+  analogWrite(9,speed);
+}
+void stop()
+{
+  //Left side motors 
+  digitalWrite(2,LOW);//Direction
+  digitalWrite(3,HIGH); //Brake
+  analogWrite(6,122);
+  //Right side motor
+  digitalWrite(4,LOW);//Direction
+  digitalWrite(5,HIGH); //Brake
+  analogWrite(9,122);
+}

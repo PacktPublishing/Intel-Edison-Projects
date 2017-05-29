@@ -1,0 +1,57 @@
+<EditText
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="android/edison"
+    android:id="@+id/channelID"
+    android:hint="Enter channel ID"
+    android:layout_centerVertical="true"
+    android:layout_alignParentStart="true"
+    android:layout_alignEnd="@+id/portNum" />
+
+<Button
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="On"
+    android:id="@+id/on"
+    android:layout_below="@+id/connectMQTT"
+    android:layout_alignParentStart="true"
+    android:layout_marginTop="45dp" />
+
+<Button
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Off"
+    android:id="@+id/off"
+    android:layout_alignTop="@+id/on"
+    android:layout_alignParentEnd="true" />
+
+<EditText
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:id="@+id/brokerAdd"
+    android:layout_alignParentTop="true"
+    android:layout_alignParentStart="true"
+    android:layout_marginTop="40dp"
+    android:hint="Broker Address"
+    android:layout_alignParentEnd="true"
+    android:text="iot.eclipse.org" />
+
+<EditText
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:id="@+id/portNum"
+    android:layout_below="@+id/brokerAdd"
+    android:layout_alignParentStart="true"
+    android:layout_marginTop="40dp"
+    android:hint="Port Default: 1883"
+    android:layout_alignEnd="@+id/brokerAdd"
+    android:text="1883" />
+
+<Button
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="@string/connect"
+    android:id="@+id/connectMQQT"
+    android:layout_below="@+id/channelID"
+    android:layout_alignParentStart="true"
+    android:layout_alignEnd="@+id/channelID" />

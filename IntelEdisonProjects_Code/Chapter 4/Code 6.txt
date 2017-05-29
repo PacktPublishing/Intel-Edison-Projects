@@ -1,0 +1,29 @@
+import cv2
+import numpy as np
+import sys
+import os
+
+faceCascade = cv2.CascadeClassifier('C:/opencv/build/haarcascade_frontalface_default.xml')
+video_capture = cv2.VideoCapture(0)
+led = mraa.Gpio(13)  
+led.dir(mraa.DIR_OUT)
+while (1):
+led.write(0)
+    # Capture frame-by-frame
+    ret, frame = video_capture.read()
+
+    gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+    faces = faceCascade.detectMultiScale(gray, 2, 4)
+    if len(faces) > 0:
+        print("Detected")
+		led.write(1)
+    else:
+        print("You are clear to proceed")
+		led.write(0)
+    if cv2.waitKey(25) == 27:
+        video_capture.release()
+        break
+
+# When everything is done, release the capture
+video_capture.release()
+cv2.destroyAllWindows()

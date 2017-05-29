@@ -1,0 +1,24 @@
+#define M11 2
+#define M12 3
+#define M21 4
+#define M22 5
+#define PWM 6
+void setup() 
+{
+  pinMode(M11,OUTPUT);
+  pinMode(M12,OUTPUT);
+  pinMode(M21,OUTPUT);
+  pinMode(M22,OUTPUT);
+}
+void loop() 
+{
+  forward();
+}
+void forward()
+{
+  digitalWrite(M11,HIGH);
+  digitalWrite(M12,LOW);
+  digitalWrite(M21,HIGH);
+  digitalWrite(M22,LOW);
+  analogWrite(PWM, 122);
+}
